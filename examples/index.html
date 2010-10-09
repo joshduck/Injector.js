@@ -2,6 +2,13 @@
 <html>
 <head><title></title></head>
 <body>
+	<div id="output">
+		<b>Static HTML before JS</b>
+		<div id="test"></div>
+		<b>Static HTML after JS</b>
+	</div>
+	<button type="button" id="run">Run</button>
+	
 	<script type="text/javascript" src="../src/injector.js"></script>
 	<script type="text/javascript">
 	
@@ -39,7 +46,7 @@
 			
 			"<p>Inner HTML after JS</p>";
 	
-		window.onload = function() {
+		document.getElementById('run').onclick = function() {
 			var container = document.getElementById('test');
 			var injector = new Injector({container: container});
 			
@@ -50,8 +57,4 @@
 			injector.insert(html);
 		}
 	</script>
-
-	<b>Static HTML before JS</b>
-	<div id="test"></div>
-	<b>Static HTML after JS</b>
 </body>
