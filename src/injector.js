@@ -57,7 +57,10 @@ function Injector(options) {
 				temp.appendChild(html[0]);
 			}
 		} else {
-			temp.innerHTML = html;
+			//IE7 refuses to work with all empty nodes. Ensure the
+			//first node has text, then remove it.
+			temp.innerHTML = '<span>.</span>' + html;
+			temp.removeChild(temp.childNodes[0]);
 		}
 
 		return temp;
@@ -115,7 +118,6 @@ function Injector(options) {
 				});
 			})();
 		}
-		return scripts;
 	};
 
 	/**
@@ -162,7 +164,7 @@ function Injector(options) {
 			node.attachEvent('onerror', func, true);
 			node.attachEvent('onload', func, true);
 			node.attachEvent('onreadystatechange', function() {
-				if (node.readyState == 'loaded') {
+				if (node.readyState == 'complete' || node.readyState == 'loaded') {
 					func();
 				}
 			});
