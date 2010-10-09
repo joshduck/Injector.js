@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head><title></title></head>
+<body>
+	<script type="text/javascript" src="../src/injector.js"></script>
+	<script type="text/javascript">
+	
+		var html = 
+			"<p>Inner HTML before JS</p>" +
+
+			"<p>" +
+			"Including MISSING JS:<br />" +
+			"<script type='text/javascript' src='404'></" + "script>" +
+			"</p>" +
+
+			"<p>" +
+			"Including alert JS:<br />" +
+			"<script type='text/javascript' src='scripts/alert.js'></" + "script>" +
+			"</p>" +
+
+			"<p>" +
+			"Including external-slow JS:<br />" +
+			"<script type='text/javascript' src='scripts/external-slow.php'></" + "script>" +
+			"</p>" +
+
+			"<p>" +
+			"Including inline JS:<br />" +
+			"<script type='text/javascript'>" +
+			"document.write('Hello from inline');" +
+			"<" + "/script>" +
+			"</p>" +
+			
+			"<p>" +
+			"<p>Including external-1 (and two sub scripts) via inline JS:<br />" +
+			"<script type='text/javascript'>" +
+			"document.write('<script type=\"text/javascript\" src=\"scripts/external-1.js\"></' + 'script>');" +
+			"<" + "/script>" +
+			"</p>" +
+			
+			"<p>Inner HTML after JS</p>";
+	
+		window.onload = function() {
+			var container = document.getElementById('test');
+			var injector = new Injector({container: container});
+			
+			injector.oncomplete = function() {
+				alert('All scripts inserted');
+			}
+
+			injector.insert(html);
+		}
+	</script>
+
+	<b>Static HTML before JS</b>
+	<div id="test"></div>
+	<b>Static HTML after JS</b>
+</body>

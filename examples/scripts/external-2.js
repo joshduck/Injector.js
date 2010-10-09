@@ -1,0 +1,1 @@
+document.write('Hello from external 2<br />');
