@@ -16,26 +16,26 @@ See `examples/index.html` for usage.
 Methods
 -------
 
-* Injector(options)
+* `Injector(options)`
   Constructor.
 
-* Injector.setContainer(element) 
+* `Injector.setContainer(element)` 
   Set the parent container that HTML should be injected into.
   Can also be set via options.container.
   
-* Injector.setSibling(element)
+* `Injector.setSibling(element)`
   Set the node which HTML should be injected *before*.
   Can also be set via options.sibling.
   
-* Injector.eval(script)
+* `Injector.eval(script)`
   Evaluate inline script, `document.write` calls will be captured and output 
   will be injected either at current position.
   
-* Injector.insert(html)
+* `Injector.insert(html)`
   Insert HTML at current position, evaluating scripts manually and overriding 
   `document.write` calls.
   
-* Injector.onComplete(callback)
+* `Injector.onComplete(callback)`
   Callback to execute after `insert()` or `eval()`
   
 Issues
@@ -47,7 +47,14 @@ Issues
 Todo
 ----
 
+* Cross browser testing.
+
 * Convert to standalone module rather than class instance.
 
 * Add queue, so that `insert()` and `eval()` can be called at any time without 
   side effects.
+  
+Thanks
+------
+
+Inspired and seeded from code shared by John Resig: http://ejohn.org/blog/xhtml-documentwrite-and-adsense/
