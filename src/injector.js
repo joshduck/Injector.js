@@ -18,7 +18,7 @@ function Injector(options) {
 		
 		containerNode = options.container;
 		currentNode = options.sibling;
-	}
+	};
 
 	/**
 	 * Merge properties of two objects and return a new combined object.
@@ -35,17 +35,17 @@ function Injector(options) {
 			}
 		}
 		return combined;
-	}
+	};
 
 	/**
 	 * Replaces document.write
 	 */
 	var documentWrite = function(html) {
 		appendHtml(html);
-	}
+	};
 
 	/**
-	 * Create temporary object for injecting HTML into.
+	 * Create temporary node and inject HTML.
 	 */
 	var createTemp = function(html) {
 		var temp = document.createElement('div');
@@ -61,7 +61,7 @@ function Injector(options) {
 		}
 
 		return temp;
-	}
+	};
 
 	/**
 	 * Append HTML at current position.
@@ -70,8 +70,8 @@ function Injector(options) {
 		var temp = createTemp(html);
 
 		replaceScripts(temp);
+		
 		var nodes = temp.childNodes;
-
 		while (nodes.length) {
 			appendNode(nodes[0]);
 		}
@@ -130,7 +130,7 @@ function Injector(options) {
 				var script = scripts.shift();
 				currentNode = script.placeholder;
 
-				// External or internal script?				
+				// External or inline script?				
 				if (script.node.src) {
 					var node = document.createElement('script');
 					node.type = 'text/javascript';
@@ -146,7 +146,7 @@ function Injector(options) {
 			} else {
 				complete();
 			}
-		}
+		};
 
 		restoreScript();
 	};
@@ -169,7 +169,7 @@ function Injector(options) {
 		} else {
 			throw Error("Failed to attach listeners to script.");
 		}
-	}
+	};
 
 
 	/**
@@ -201,7 +201,7 @@ function Injector(options) {
 				document.write = temp;
 				self.oncomplete.call();
 			});
-		}
+		};
 	};
 
 	/**
@@ -209,7 +209,7 @@ function Injector(options) {
 	 */
 	this.oncomplete = function() {
 		
-	}
+	};
 
 	/**
 	 * Evaluate JS code in the current position.
@@ -232,7 +232,7 @@ function Injector(options) {
 		if (containerNode) {
 			containerNode = container;
 		}
-	}
+	};
 
 	/**
 	 * Set the sibling node scripts should be run AFTER.
@@ -242,7 +242,7 @@ function Injector(options) {
 			currentNode = sibling;
 			containerNode = sibling.parentNode;
 		}
-	}
+	};
 
 	init();
 }
