@@ -8,6 +8,8 @@ Injector.js is a helper library to easy the pain of mixing asynchronous
 JavaScript and dynamic content building with third party scripts which insist 
 `document.write` is still a good idea.
 
+This script in beta but works on major browsers (IE, Firefox and Chome).
+
 Usage
 -----
 

@@ -38,6 +38,21 @@ function Injector(options) {
 	};
 
 	/**
+	 * Fire onload events.
+	 */
+	var fireLoadEvents = function() {
+		var load;
+		if (document.createEvent) {
+			load = document.createEvent('HTMLEvents');
+			load.initEvent('load', false, true);
+			window.dispatchEvent(load);
+		} else if (document.createEventObject) {
+			load = document.createEventObject();
+			document.body.fireEvent('onload', load);
+		}
+	};
+
+	/**
 	 * Replaces document.write
 	 */
 	var documentWrite = function(html) {
@@ -231,7 +246,7 @@ function Injector(options) {
 	 * Set our current node scripts should execute in the context of.
 	 */
 	this.setContainer = function(container) {
-		if (containerNode) {
+		if (container) {
 			containerNode = container;
 		}
 	};
