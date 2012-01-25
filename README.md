@@ -4,7 +4,7 @@ Injector.js
 About
 -----
 
-Injector.js is a helper library to easy the pain of mixing asynchronous 
+Injector.js is a helper library to ease the pain of mixing asynchronous 
 JavaScript and dynamic content building with third party scripts which insist 
 `document.write` is still a good idea.
 
