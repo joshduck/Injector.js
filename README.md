@@ -37,7 +37,7 @@ Methods
   Insert HTML at current position, evaluating scripts manually and overriding 
   `document.write` calls.
   
-* `Injector.onComplete(callback)`
+* `Injector.oncomplete(callback)`
   Callback to execute after `insert()` or `eval()`
   
 Issues
